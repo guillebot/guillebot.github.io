@@ -18,10 +18,7 @@
       
       <guid>https://guillebot.github.io/blog/proximos-articulos/</guid>
       <description>Como anticipo de lo que se viene, contamos cuáles van a ser los próximos artículos:
- Selección de controlador. ¿Qué software usar para integrar todo?
- ¿Que es y por qué usamos MQTT?
- Wi-Fi vs nRF. Tipos de redes.
-  ¿Te interesa otro tema? Escribinos</description>
+Selección de controlador. ¿Qué software usar para integrar todo? ¿Qué es y por qué usamos MQTT? Wi-Fi vs nRF. Tipos de redes.  ¿Te interesa otro tema? Escribinos</description>
     </item>
     
     <item>
@@ -42,7 +39,7 @@ El problema del IoT es nuevo y amplio, tiene elementos de networking, hardware y
       <guid>https://guillebot.github.io/blog/resumen-plataforma/</guid>
       <description>Para nuestras soluciones de domótica, usamos el framework Eclipse Smarthome corriendo en Raspberry Pi como producto, o en máquina virtual para desarrollo o soluciones muy grandes.
 Utilizamos todos los bindings disponibles, y MQTT como conector de todo lo demás, siempre que es posible.
-A nivel networking ethernet o wifi para los dispositivos standard del mercado. Para nuestros sensores y actuadores utilizamos la banda ISM de 2.4GHz con el chipset Nordic nRF24, aunque estamos ya experimentando con el mucho mas moderno nRF5x.</description>
+A nivel networking ethernet o wifi para los dispositivos standard del mercado. Para nuestros sensores y actuadores utilizamos la banda ISM de 2.4GHz con el chipset Nordic nRF24, aunque estamos ya experimentando con el más moderno nRF5x.</description>
     </item>
     
   </channel>
