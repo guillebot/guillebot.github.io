@@ -197,7 +197,7 @@
 
 <h2 id="controlador">Controlador</h2>
 
-<p>En mi caso elegí centralizar todo en OpenHAB, utilizando MQTT como protocolo intermedio.</p>
+<p>En mi caso elegí centralizar todo en <a href="https://openhab.org">OpenHAB</a>, utilizando MQTT como protocolo intermedio.</p>
 
 <p>Esto me permite aprovechar todas las ventajas de OpenHAB pero al mismo tiempo me deja toda la información de sensores y actuadores disponibles para cualquier otra aplicación mas específica que quiera hacer. Por ejemplo si quisiera armar una app para smartphone que muestre la temperatura de algunos de los nodos, puedo hacerlo sin necesidad de pasar (o incluso de tener instalado) un controlador de domótica completo.</p>
 
@@ -212,13 +212,10 @@
 <p><strong>Nodo</strong></p>
 
 <ol>
-<li><p>Usar Arduino Nano programado via Arduino IDE</p></li>
-
-<li><p>Conectarle sensor de temperatura (ejemplo)</p></li>
-
-<li><p>Conectarle un módulo nRF24l01. Sirve cualquier módulo.</p></li>
-
-<li><p>Utilizar la plataforma y library MySensors</p></li>
+<li>Usar Arduino Nano programado via Arduino IDE</li>
+<li>Conectarle sensor de temperatura (ejemplo)</li>
+<li>Conectarle un módulo nRF24l01. Sirve cualquier módulo.</li>
+<li>Utilizar la plataforma y library MySensors con sketch <a href="https://www.mysensors.org/build/temp">Temperature</a></li>
 </ol>
 
 <p><strong>Gateway</strong></p>
@@ -227,7 +224,7 @@
 <li>Usar Arduino Uno</li>
 <li>Conectar Ethernet Shield</li>
 <li>Conectar un módulo nRF24l01. Recomiendo módulo con amplificador y antena externa.</li>
-<li>Utilizar la plataforma y library MySensors con sketch mqtt-gateway</li>
+<li>Utilizar la plataforma y library MySensors con sketch <a href="https://www.mysensors.org/build/mqtt_gateway">mqtt-gateway</a></li>
 </ol>
 
 <p>A partir de ahí la info de los sensores va a estar disponible en topics de mqtt.</p>
