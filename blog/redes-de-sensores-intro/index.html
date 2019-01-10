@@ -126,13 +126,105 @@
 
 <p>Lo primero es tener algo in situ para poder conectarle sensores y medir cosas. Acá lo que buscamos es un pequeño microcontrolador, fácil de conectar, fácil de programar, barato y con muchas entradas y salidas. Es deseable también que tenga bajo consumo de energía, para permitirnos nodos alimentados a batería.</p>
 
-<p>Para nuestras soluciones de domótica, usamos el framework <a href="https://www.eclipse.org/smarthome/">Eclipse Smarthome</a> corriendo en <a href="https://www.raspberrypi.org/">Raspberry Pi</a> como producto, o en máquina virtual para desarrollo o soluciones muy grandes.</p>
+<p>Hay muchas opciones en el mercado, las que mas se escuchan son: <a href="https://www.arduino.cc/">Arduino</a>, <a href="https://www.pjrc.com/teensy/">Teensy</a>, <a href="https://en.wikipedia.org/wiki/STM32">STM32</a>, <a href="https://en.wikipedia.org/wiki/PIC_microcontrollers">PIC</a>, y ultimamente las que traen incluido el módulo de WiFi, como <a href="https://www.espressif.com/en/products/hardware/esp8266ex/overview">ESP8266</a> y el mucho mas moderno y potente <a href="https://www.espressif.com/en/products/hardware/esp32/overview">ESP32</a>.</p>
 
-<p>Utilizamos todos los <a href="https://www.eclipse.org/smarthome/documentation/features/bindings/astro/readme.html">bindings</a> disponibles, y <a href="http://mqtt.org/">MQTT</a> como conector de todo lo demás, siempre que es posible.</p>
+<p>Buscando sobre todo precio, disponibilidad y comunidad, yo me inclino por la plataforma Arduino. Mas adelante voy a mostrar algunos experimentos con ESP8266 y ESP32, pero dado que WiFi no es mi primera opción en términos de networking no les estoy dando tanta importancia.</p>
 
-<p>A nivel networking <a href="https://en.wikipedia.org/wiki/Ethernet">ethernet</a> o <a href="https://en.wikipedia.org/wiki/Wi-Fi">wifi</a> para los dispositivos standard del mercado. Para nuestros sensores y actuadores utilizamos la <a href="https://en.wikipedia.org/wiki/ISM_band">banda ISM</a> de 2.4GHz con el chipset <a href="https://www.nordicsemi.com/">Nordic</a> <a href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF24-series">nRF24</a>, aunque estamos ya experimentando con el más moderno <a href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832">nRF5x</a>.</p>
+<p>En mi caso al pensar en redes de sensores busco funcionalidad mínima en el borde y concentrar la inteligencia y procesamiento en un controlador (mas de esto abajo). Hay otros casos de uso donde se necesita procesar con mas potencia en origen y ahí son muy potentes las soluciones de 32 bits del STM32.</p>
 
-<p>En el <a href="/blog">resto de los artículos</a> van a poder encontrar el porqué de cada una de esas decisiones.</p>
+<h3 id="qué-es-el-famoso-arduino">¿Qué es el famoso Arduino?</h3>
+
+<p>Por el lado del hardware son pequeñas placas con un microcontrolador Atmel, que ya vienen completas y listas para usar, como Arduino <a href="https://www.arduino.cc/en/Guide/ArduinoNano">Nano</a> o Arduino <a href="https://store.arduino.cc/usa/arduino-uno-rev3">Uno</a>. Lo mas importante es todo el entorno que tienen, Arduino IDE y una gran cantidad de ejemplos. Los programas de arduino se llaman <em>sketches</em>.</p>
+
+<p>A mi de la plataforma Arduino me gusta la comunidad, y que es muy fácil pasar de una placa &ldquo;comprada&rdquo; a un circuito propio, migrando sólo el microcontrolador Atmel 328p y 4 componentes discretos. <a href="https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard">Ejemplo</a>.</p>
+
+<p>Esto a veces conviene y a veces no, según el caso, pero es muy potente.</p>
+
+<p>Normalmente el camino pasa por desarrollar en protoboard, usando por ejemplo un Arduino Nano, y luego si funciona y queremos escalar el diseño para bajar costos y producir en volumen, se va despojando de todo lo innecesario hasta llevarlo a su mínima expresión. Si es sólo para pocas unidades o para prototipos, se deja el arduino completo. Tengo varios casos de Arduinos Nano en posiciones definitivas midiendo temperatura, altura de tanque de agua, humedad, etc.</p>
+
+<h2 id="sensores">Sensores</h2>
+
+<p>Afortunadamente hay multitud de sensores para medir prácticamente todo lo que se nos ocurra. Podemos comenzar con los mas clásicos como Temperatura, Humedad Relativa o Presión Atmosférica para pasar luego a detecciones de gases, partículas, movimiento, etc.</p>
+
+<h2 id="conectividad">Conectividad</h2>
+
+<p>Quizás el punto mas importante de las redes de sensores es como conectar todos los dispositivos.</p>
+
+<h3 id="hardware">Hardware</h3>
+
+<p>Si bien a esta altura el candidato natural parece ser WiFi, en la práctica yo me encontré con algunos inconvenientes que me llevaron a evaluar otras opciones:</p>
+
+<ol>
+<li><p>Consumo de energía. WiFi consume en el orden de los cientos de mA. Esto para dispositivos conectados a 220V no es un inconveniente pero deja fuera la posibilidad de tener dispositivos alimentados exclusivamente a baterias.</p></li>
+
+<li><p>Alcance. Mi experiencia incluso en lugares chicos es que nunca se llega a tener una cobertura total y confiable. Los modos mas avanzados de WiFi, como 802.11ac no están disponibles en los módulos económicos para microcontroladores, y los modos mas convencionales como 802.11b/g/n tienen inconvenientes.</p></li>
+
+<li><p>Repetidoras/Mesh. Cada dispositivo WiFi opera como una entidad independiente. Es bastante complejo armar redes tipo mesh donde cada nodo sea también un repetidor. Esa característica es muy deseable y nos permite armar redes con una robustez muy importante.</p></li>
+
+<li><p>Precio. Aún con la masividad de estos módulos, se encuentran en el mercado alternativas en banda ISM mas económicas.</p></li>
+</ol>
+
+<p>En resumen, tengo a WiFi como una alternativa para algunos dispositivos que sé que van a estar en buena área de cobertura, y con acceso a energía de 220V.</p>
+
+<p>¿Que otras alternativas hay?</p>
+
+<p>Las principales que veo son:</p>
+
+<ol>
+<li>RFM69, en 430MHz o 900MHz)</li>
+<li>nRF24, en 2.4GHz</li>
+<li>nRF5x, en 2.4GHz</li>
+</ol>
+
+<p>De todas estas yo estoy trabajando por el momento con los módulos nRF24L01 de Nordic. Tiene características de ancho de banda, consumo de energía, alcance, posibilidad de armar repetidores y varias otras que la hacen muy interesante, sobre todo con una buena plataforma de software.</p>
+
+<p>No he necesitado indagar en RFM69, que por ser una frecuencia mas baja tiene algunas ventajas desde el punto de vista alcance, pero sí tengo pendiente explorar la línea nRF5x que es la versión mas moderna de nRF24.</p>
+
+<p>Los módulos de nRF24 trabajan en 2.4GHz al igual que WiFi, lo que nos permite utilizar antenas pequeñas, consumen menos de 1mA en standby, alrededor de 10mA cuando transmiten, son fisicamente muy chicos, y están ampliamente difundidos en la comunidad.</p>
+
+<h3 id="software">Software</h3>
+
+<p>Sin importar el hardware que se use, el acceso a software de calidad que lo pueda utilizar es clave.</p>
+
+<p>En el caso de los módulos RFM69 y nRF, hay una gran comunidad alrededor de la plataforma <a href="https://www.mysensors.org/">MySensors</a>. El trabajo en esta plataforma es bastante extenso pero lo principal se puede resumir en:</p>
+
+<ol>
+<li>Open Source. Gran comunidad de desarrolladores de software y hardware.</li>
+<li>Utiliza al detalle las mejores características de los módulos nRF para armar redes que si bien no son full mesh, son árboles con repetidores automáticos, autodiscovery, reintento en caso de errores, etc.</li>
+<li>Tipifican y resuelven de forma elegante la cantidad de tipos de sensores y los valores que estos sensores entregan.</li>
+<li>Resuelve de forma directa o via MQTT la conectividad con los principales controladores de domótica existentes como HA, OpenHAB, Domoticz, etc.</li>
+</ol>
+
+<h2 id="controlador">Controlador</h2>
+
+<p>En mi caso elegí centralizar todo en OpenHAB, utilizando MQTT como protocolo intermedio.</p>
+
+<p>Esto me permite aprovechar todas las ventajas de OpenHAB pero al mismo tiempo me deja toda la información de sensores y actuadores disponibles para cualquier otra aplicación mas específica que quiera hacer. Por ejemplo si quisiera armar una app para smartphone que muestre la temperatura de algunos de los nodos, puedo hacerlo sin necesidad de pasar (o incluso de tener instalado) un controlador de domótica completo.</p>
+
+<p>Lo mismo si quisiera armar alguna pantalla muy simple para mostrar información o setear escenas.</p>
+
+<p>Es decir esta combinación permite arrancar con nodo y gateway muy sencillos para luego convertirse si así se desea en una solución completa de domótica.</p>
+
+<p>OpenHAB es increiblemente amplio y se va a desarrollar en un artículo posterior.</p>
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<p>Nodo</p>
+
+<ol>
+<li>Usar Arduino Nano programado via Arduino IDE</li>
+<li>Conectarle sensor de temperatura (ejemplo)</li>
+<li>Conectarle un módulo nRF24l01</li>
+<li>Utilizar la plataforma y library MySensors</li>
+</ol>
+
+<p>Gateway
+1. Usar Arduino Uno
+2. Conectar Ethernet Shield
+3. Conectar un módulo nRF24l01
+4. Utilizar la plataforma y library MySensors con sketch mqtt-gateway</p>
+
+<p>A partir de ahí la info de los sensores va a estar disponible en topics de mqtt.</p>
 
                 </div>
             </div>
