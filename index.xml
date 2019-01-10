@@ -6,10 +6,20 @@
     <description>Recent content on E3 - IoT | Evolución 3 IoT</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Dec 2018 14:39:16 +0600</lastBuildDate>
+    <lastBuildDate>Thu, 10 Jan 2019 12:52:36 +0600</lastBuildDate>
     
 	<atom:link href="https://guillebot.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introducción redes de Sensores</title>
+      <link>https://guillebot.github.io/blog/redes-de-sensores-intro/</link>
+      <pubDate>Thu, 10 Jan 2019 12:52:36 +0600</pubDate>
+      
+      <guid>https://guillebot.github.io/blog/redes-de-sensores-intro/</guid>
+      <description>Si te interesa como a mi la tecnología y te gusta el diy, tarde o temprano vas a ver que todos están conectando cosas, midiendo parámetros de su entorno, y eventualmente analizando esos datos o hasta controlando cosas a partir de los mismos.
+Bienvenido al mundo de las Redes de Sensores. Salvo contadas excepciones, en nuestro caso estas redes van a ser inalámbricas, por lo menos el último tramo hasta los sensores o actuadores.</description>
+    </item>
     
     <item>
       <title>Nuestros próximos artículos</title>

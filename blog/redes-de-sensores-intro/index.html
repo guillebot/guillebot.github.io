@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="generator" content="Hugo 0.52" />
 		
-        <title> Blogs </title>
+        <title> Introducción redes de Sensores </title>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="https://guillebot.github.io/images/favicon.ico"/>
@@ -85,87 +85,51 @@
 </header>
 <!-- End Fixed Navigation -->
 
-<!-- Start Blog Section -->
-<section id="blog" class="section">
+<section class="section">
     <div class="container">
         <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h1>Introducción redes de Sensores</h1>
+                <ul class="list-inline mb-50">
+                    <li class="list-inline-item">Guillermo</li>
+                    <li class="list-inline-item">Thursday, Jan 10, 2019</li>
+                </ul>
+                <img class="img-fluid mb-50" src="https://guillebot.github.io/images/blog/blog-post-1.jpg" alt="blog-image">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="post-single-content">
+                    <p>Si te interesa como a mi la tecnología y te gusta el <a href="https://en.wikipedia.org/wiki/Do_it_yourself">diy</a>, tarde o temprano vas a ver que todos están conectando cosas, midiendo parámetros de su entorno, y eventualmente analizando esos datos o hasta controlando cosas a partir de los mismos.</p>
 
-            <div class="clearfix">
-                
-                <!-- single blog post -->
-                <article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
-                    <div class="post-block">
-                        <div class="media-wrapper">
-                            <img src="https://guillebot.github.io/images/blog/blog-post-1.jpg" alt="post-image" class="img-responsive">
-                        </div>
+<p>Bienvenido al mundo de las <a href="https://es.wikipedia.org/wiki/Red_de_sensores">Redes de Sensores</a>. Salvo contadas excepciones, en nuestro caso estas redes van a ser inalámbricas, por lo menos el último tramo hasta los sensores o actuadores.</p>
 
-                        <div class="content">
-                            <h3><a href="https://guillebot.github.io/blog/redes-de-sensores-intro/">Introducción redes de Sensores</a></h3>
-                            <p>Si te interesa como a mi la tecnología y te gusta el diy, tarde o temprano vas a ver que todos están conectando cosas, midiendo parámetros de su entorno, y eventualmente analizando esos datos o hasta controlando cosas a partir de los mismos.
-Bienvenido al mundo de las Redes de Sensores. Salvo contadas excepciones, en nuestro caso estas redes van a ser inalámbricas, por lo menos el último tramo hasta los sensores o actuadores.</p>
-                            <a class="btn btn-transparent" href="https://guillebot.github.io/blog/redes-de-sensores-intro/">Read more</a>
-                        </div>
-                    </div>
-                </article>
-                <!-- /single blog post -->
-                
-                <!-- single blog post -->
-                <article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
-                    <div class="post-block">
-                        <div class="media-wrapper">
-                            <img src="https://guillebot.github.io/images/blog/blog-post-2.jpg" alt="post-image" class="img-responsive">
-                        </div>
+<p>Te ponés a googlear un poco y el abanico es infinito. ¿Por dónde arranco?</p>
 
-                        <div class="content">
-                            <h3><a href="https://guillebot.github.io/blog/proximos-articulos/">Nuestros próximos artículos</a></h3>
-                            <p>Como anticipo de lo que se viene, contamos cuáles van a ser los próximos artículos:
-Selección de controlador. ¿Qué software usar para integrar todo? ¿Qué es y por qué usamos MQTT? Wi-Fi vs nRF. Tipos de redes. Nuestro sistema ideal. ¿Que queremos? Características de nuestro sistema.  ¿Te interesa otro tema? Escribinos</p>
-                            <a class="btn btn-transparent" href="https://guillebot.github.io/blog/proximos-articulos/">Read more</a>
-                        </div>
-                    </div>
-                </article>
-                <!-- /single blog post -->
-                
-                <!-- single blog post -->
-                <article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
-                    <div class="post-block">
-                        <div class="media-wrapper">
-                            <img src="https://guillebot.github.io/images/blog/blog-post-3.jpg" alt="post-image" class="img-responsive">
-                        </div>
+<p>Lo que yo te cuento acá es el proceso que me fue llevando hasta el combo que por el momento me funciona y me parece sostenible en varios aspectos. Yo busco soluciones:</p>
 
-                        <div class="content">
-                            <h3><a href="https://guillebot.github.io/blog/domotica-mercados-emergentes/">Domótica para mercados emergentes</a></h3>
-                            <p>Introducción En este artículo junto con todos los siguientes, vamos a intentar dar nuestra visión sobre la domótica y las premisas que creemos son fundamentales para atacar el tema desde nuestra posición de país emergente. La idea es definir una serie de fundamentos o lineamientos que luego vamos a seguir desarrollando tanto en un proyecto abierto como su variante comercial.
-El problema del IoT es nuevo y amplio, tiene elementos de networking, hardware y software.</p>
-                            <a class="btn btn-transparent" href="https://guillebot.github.io/blog/domotica-mercados-emergentes/">Read more</a>
-                        </div>
-                    </div>
-                </article>
-                <!-- /single blog post -->
-                
-                <!-- single blog post -->
-                <article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
-                    <div class="post-block">
-                        <div class="media-wrapper">
-                            <img src="https://guillebot.github.io/images/blog/blog-post-1.jpg" alt="post-image" class="img-responsive">
-                        </div>
+<ul>
+<li>Que tengan continuidad en el tiempo, con comunidades activas y participativas. Cualquiera sea la solución elegida, tiene su curva de aprendizaje que normalmente es compleja. Dado que el tiempo es escaso no me interesa gastarlo en plataformas que tengan muchas chances de discontinuarse de un momento a otro.</li>
+<li>Abiertas, gratis y opensource e incluso me permitan desarrollar proyectos comerciales.</li>
+<li>Escalables en volumen, desde uno hasta miles de sensores. Después de todo cuando uno tiene el interés por medir, lo quiere medir todo.</li>
+<li>Baratas. No me sirven soluciones de USD25 por nodo. El nodo completo debe ser sub USD10, lo que me deja como máximo USD 1 o USD 2 para las comunicaciones.</li>
+</ul>
 
-                        <div class="content">
-                            <h3><a href="https://guillebot.github.io/blog/resumen-plataforma/">Resumen Plataforma</a></h3>
-                            <p>Para nuestras soluciones de domótica, usamos el framework Eclipse Smarthome corriendo en Raspberry Pi como producto, o en máquina virtual para desarrollo o soluciones muy grandes.
-Utilizamos todos los bindings disponibles, y MQTT como conector de todo lo demás, siempre que es posible.
-A nivel networking ethernet o wifi para los dispositivos standard del mercado. Para nuestros sensores y actuadores utilizamos la banda ISM de 2.4GHz con el chipset Nordic nRF24, aunque estamos ya experimentando con el más moderno nRF5x.</p>
-                            <a class="btn btn-transparent" href="https://guillebot.github.io/blog/resumen-plataforma/">Read more</a>
-                        </div>
-                    </div>
-                </article>
-                <!-- /single blog post -->
-                
+<p>En resumen, lo que estoy usando es <a href="https://guillebot.github.io/blog/resumen-plataforma/">esto</a>. En este artículo vamos a ir desde abajo hacia arriba en cada item.</p>
+
+<p><em>Sensores</em></p>
+
+<p>Para nuestras soluciones de domótica, usamos el framework <a href="https://www.eclipse.org/smarthome/">Eclipse Smarthome</a> corriendo en <a href="https://www.raspberrypi.org/">Raspberry Pi</a> como producto, o en máquina virtual para desarrollo o soluciones muy grandes.</p>
+
+<p>Utilizamos todos los <a href="https://www.eclipse.org/smarthome/documentation/features/bindings/astro/readme.html">bindings</a> disponibles, y <a href="http://mqtt.org/">MQTT</a> como conector de todo lo demás, siempre que es posible.</p>
+
+<p>A nivel networking <a href="https://en.wikipedia.org/wiki/Ethernet">ethernet</a> o <a href="https://en.wikipedia.org/wiki/Wi-Fi">wifi</a> para los dispositivos standard del mercado. Para nuestros sensores y actuadores utilizamos la <a href="https://en.wikipedia.org/wiki/ISM_band">banda ISM</a> de 2.4GHz con el chipset <a href="https://www.nordicsemi.com/">Nordic</a> <a href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF24-series">nRF24</a>, aunque estamos ya experimentando con el más moderno <a href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832">nRF5x</a>.</p>
+
+<p>En el <a href="/blog">resto de los artículos</a> van a poder encontrar el porqué de cada una de esas decisiones.</p>
+
+                </div>
             </div>
         </div>
     </div>
 </section>
-<!-- /blog -->
 
 <!-- end Contact Area -->
 <footer id="footer" class="bg-one">
@@ -238,4 +202,3 @@ A nivel networking ethernet o wifi para los dispositivos standard del mercado. P
 		
     </body>
 </html>
-
